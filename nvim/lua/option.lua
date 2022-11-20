@@ -6,11 +6,10 @@ local options = {
   incsearch = true,
   swapfile = false,
   tabstop = 2,
-	expandtab = true,
+  expandtab = true,
   number = true,
   splitbelow = true,
-  splitright = true, 
-  showtabline = 2,
+  splitright = true,
   shiftwidth = 2,
   wildoptions = "pum",
   backup = false,
@@ -19,5 +18,3 @@ vim.opt.shortmess:append("c")
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-
-
