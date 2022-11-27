@@ -2,7 +2,6 @@ local options = {
   encoding = "utf-8",
   fileencoding = "utf-8",
   title = true,
-  hlsearch = true,
   incsearch = true,
   swapfile = false,
   tabstop = 2,
@@ -15,6 +14,7 @@ local options = {
   backup = false,
 }
 vim.opt.shortmess:append("c")
+vim.opt.hlsearch = true
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
