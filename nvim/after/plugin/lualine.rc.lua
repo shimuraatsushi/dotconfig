@@ -1,7 +1,7 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'powerline',
+    theme = 'solarized_light',
     disabled_filetypes = {
       statusline = {},
       winbar = {},
