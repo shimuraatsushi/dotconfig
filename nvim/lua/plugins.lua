@@ -16,7 +16,6 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'glepnir/lspsaga.nvim'
-  -- use 'tanvirtin/monokai.nvim'
   use {
     'svrana/neosolarized.nvim',
     requires = { 'tjdevries/colorbuddy.nvim' }
@@ -31,4 +30,5 @@ packer.startup(function(use)
   }
   use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
+  use 'L3MON4D3/LuaSnip'
 end)
