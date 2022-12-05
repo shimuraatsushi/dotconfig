@@ -31,4 +31,6 @@ packer.startup(function(use)
   use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'L3MON4D3/LuaSnip'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'nvim-lua/plenary.nvim'
 end)
