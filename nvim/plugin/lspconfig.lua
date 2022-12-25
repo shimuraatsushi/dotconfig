@@ -106,14 +106,14 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  update_in_insert = false,
-  virtual_text = { spacing = 4, prefix = "●" },
-  severity_sort = true,
-}
-)
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--   vim.lsp.diagnostic.on_publish_diagnostics, {
+--   underline = true,
+--   update_in_insert = false,
+--   virtual_text = { spacing = 4, prefix = "●" },
+--   severity_sort = true,
+-- }
+-- )
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -123,11 +123,12 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = '●'
-  },
-  update_in_insert = true,
-  float = {
-    source = "always", -- Or "if_many"
-  },
+  virtual_text = false,
+  --  update_in_insert = true,
+  --  float = {
+  --    source = "always", -- Or "if_many"
+  --  },
 })
+
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
