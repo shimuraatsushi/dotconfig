@@ -16,9 +16,12 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use 'glepnir/lspsaga.nvim'
+  --  use {
+  --    'svrana/neosolarized.nvim',
+  --    requires = { 'tjdevries/colorbuddy.nvim' }
+  --  }
   use {
-    'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
+    'tomasr/molokai'
   }
   use {
     'nvim-treesitter/nvim-treesitter',
