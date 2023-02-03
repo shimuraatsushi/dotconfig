@@ -1,4 +1,4 @@
-  # License : MIT
+# License : MIT
 # http://mollifier.mit-license.org/
  
 ########################################
@@ -136,10 +136,6 @@ bindkey '^R' history-incremental-pattern-search-backward
 alias la='ls -a'
 alias ll='ls -l'
  
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
- 
 alias mkdir='mkdir -p'
  
 # sudo の後のコマンドでエイリアスを有効にする
@@ -189,3 +185,5 @@ export FZF_INSTALL_DIR="/usr/bin/fzf"
 export LANG=en_US.UTF-8
 
 # vim:set ft=zsh:
+
+alias okta-awscli="okta-awscli -v"
