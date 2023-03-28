@@ -182,5 +182,5 @@ export FZF_INSTALL_DIR="/usr/bin/fzf"
 export LANG=en_US.UTF-8
 
 # vim:set ft=zsh:
-
-alias okta-awscli="okta-awscli -v"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$($HOME/.rbenv/bin/rbenv init -)"
