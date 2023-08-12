@@ -33,4 +33,6 @@ packer.startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'nvim-lua/plenary.nvim'
+  use { 'junegunn/fzf', run = ":call fzf#install()" }
+  use { 'junegunn/fzf.vim' }
 end)
