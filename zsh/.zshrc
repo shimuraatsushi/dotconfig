@@ -181,6 +181,4 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export FZF_INSTALL_DIR="/usr/bin/fzf"
 export LANG=en_US.UTF-8
 
-# vim:set ft=zsh:
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$($HOME/.rbenv/bin/rbenv init -)"
+eval "$(/opt/homebrew/bin/rbenv init - zsh)"
