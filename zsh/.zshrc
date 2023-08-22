@@ -174,6 +174,9 @@ alias vim='nvim'
 
 export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
+export PATH=$HOME/local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
+export MANPATH=$HOME/local/share/man:$MANPATH
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
@@ -181,6 +184,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export FZF_INSTALL_DIR="/usr/bin/fzf"
 export LANG=en_US.UTF-8
 
+
 # vim:set ft=zsh:
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$($HOME/.rbenv/bin/rbenv init -)"
