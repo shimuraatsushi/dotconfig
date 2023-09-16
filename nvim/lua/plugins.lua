@@ -15,10 +15,10 @@ packer.startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
-  use 'glepnir/lspsaga.nvim'
+  use 'nvimdev/lspsaga.nvim'
   use 'prettier/vim-prettier'
   use {
-    'tomasr/molokai'
+    'morhetz/gruvbox'
   }
   use {
     'nvim-treesitter/nvim-treesitter',
