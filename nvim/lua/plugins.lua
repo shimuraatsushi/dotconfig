@@ -35,4 +35,9 @@ packer.startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use { 'junegunn/fzf', run = ":call fzf#install()" }
   use { 'junegunn/fzf.vim' }
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.2',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 end)
