@@ -18,7 +18,7 @@ packer.startup(function(use)
   use 'nvimdev/lspsaga.nvim'
   use 'prettier/vim-prettier'
   use {
-    'morhetz/gruvbox'
+    'tanvirtin/monokai.nvim'
   }
   use {
     'nvim-treesitter/nvim-treesitter',
