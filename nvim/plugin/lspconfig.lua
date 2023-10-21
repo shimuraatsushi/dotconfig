@@ -38,23 +38,23 @@ end
 
 protocol.CompletionItemKind = {
   '', -- Text
-  '', -- Method
-  '', -- Function
-  '', -- Constructor
+  '', -- Method
+  '󰊕', -- Function
+  '', -- Constructor
   '', -- Field
   '', -- Variable
   '', -- Class
-  'ﰮ', -- Interface
-  '', -- Module
+  '', -- Interface
+  '󰕳', -- Module
   '', -- Property
   '', -- Unit
-  '', -- Value
+  '󰫧', -- Value
   '', -- Enum
-  '', -- Keyword
-  '﬌', -- Snippet
+  '', -- Keyword
+  '', -- Snippet
   '', -- Color
   '', -- File
-  '', -- Reference
+  '', -- Reference
   '', -- Folder
   '', -- EnumMember
   '', -- Constant
