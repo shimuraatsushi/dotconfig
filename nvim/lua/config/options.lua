@@ -6,3 +6,5 @@ local opt = vim.opt
 opt.relativenumber = false
 opt.undofile = false
 opt.swapfile = false
+opt.wrap = true
+opt.incsearch = true
