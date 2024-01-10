@@ -1,10 +1,7 @@
 return {
   {
-    "polirritmico/monokai-nightasty.nvim",
+    "ellisonleao/gruvbox.nvim",
     lazy = true,
     priority = 1000,
-    opts = {
-      dark_style_background = "transparent",
-    },
   },
 }
