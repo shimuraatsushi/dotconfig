@@ -130,8 +130,8 @@ bindkey '^R' history-incremental-pattern-search-backward
 ########################################
 # エイリアス
  
-alias la='ls -a'
-alias ll='ls -l'
+alias la='ls -at'
+alias ll='ls -lt'
  
 alias mkdir='mkdir -p'
  
@@ -186,7 +186,7 @@ export LANG=en_US.UTF-8
 
 # vim:set ft=zsh:
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(~/.rbenv/bin/rbenv init - zsh)"
+eval "$(/opt/homebrew/bin/rbenv init - zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
