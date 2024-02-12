@@ -1,5 +1,5 @@
 return {
-  -- add any tools you want to have installed below
+  -- Masonを使ってツールをインストール
   {
     "williamboman/mason.nvim",
     opts = {
@@ -13,116 +13,96 @@ return {
     },
   },
 
-  -- Use <tab> for completion and snippets (supertab)
-  -- first: disable default <tab> and <s-tab> behavior in LuaSnip
+  -- LuaSnipの設定（<tab>のデフォルト動作を無効化）
   {
     "L3MON4D3/LuaSnip",
     keys = function()
       return {}
     end,
   },
-  -- then: setup supertab in cmp
+
+  -- nvim-cmpの設定（<tab>で補完とスニペット）
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-emoji", -- 依存関係にcmp-emojiを追加
+      "L3MON4D3/LuaSnip", -- LuaSnipを依存関係に追加
     },
-    ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
-      local has_words_before = function()
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-
-      local luasnip = require("luasnip")
-      local cmp = require("cmp")
-
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-            -- this way you will only jump inside the snippet region
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
+      require("cmp").setup({
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
+        mapping = {
+          ["<Tab>"] = function(fallback)
+            if require("cmp").visible() then
+              require("cmp").select_next_item()
+            elseif require("luasnip").expand_or_jumpable() then
+              require("luasnip").expand_or_jump()
+            else
+              fallback()
+            end
+          end,
+          ["<S-Tab>"] = function(fallback)
+            if require("cmp").visible() then
+              require("cmp").select_prev_item()
+            elseif require("luasnip").jumpable(-1) then
+              require("luasnip").jump(-1)
+            else
+              fallback()
+            end
+          end,
+        },
+        sources = require("cmp").config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+        }),
       })
-
-      opts.completion = {
-        completeopt = "menuone,noinsert,noselect",
-      }
     end,
   },
-  -- add solargraph to lspconfig
-  {
-    "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
-    opts = {
-      ---@type lspconfig.options
-      servers = {
-        solargraph = {
-          cmd = {
-            "solargraph",
-            "stdio",
-          },
-          filetypes = { "ruby" },
-          settings = {
-            solargraph = {
-              diagnostics = true,
-            },
-          },
-        },
-      },
-    },
-  },
 
-  -- add tsserver and setup with typescript.nvim instead of lspconfig
+  -- LSP設定（solargraphとtsserver）
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "jose-elias-alvarez/typescript.nvim",
-      init = function()
-        require("lazyvim.util").lsp.on_attach(function(_, buffer)
-          -- stylua: ignore
-          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
-        end)
-      end,
+      "williamboman/mason.nvim", -- masonを依存関係に追加
+      "jose-elias-alvarez/typescript.nvim", -- typescript.nvimを依存関係に追加
     },
-    ---@class PluginLspOpts
-    opts = {
-      ---@type lspconfig.options
-      servers = {
-        -- tsserver will be automatically installed with mason and loaded with lspconfig
-        tsserver = {},
-      },
-      -- you can do any additional lsp server setup here
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-      setup = {
-        -- example to setup with typescript.nvim
-        tsserver = function(_, opts)
-          require("typescript").setup({ server = opts })
-          return true
-        end,
-        -- Specify * to use this function as a fallback for any server
-        -- ["*"] = function(server, opts) end,
-      },
-    },
+    config = function()
+      vim.diagnostic.config({
+        virtual_text = false,
+      })
+      -- LSPのon_attach関数
+      local on_attach = function(client, bufnr)
+        local opts = { noremap = true, silent = true }
+        -- 診断メッセージをフローティングウィンドウで表示するキーマッピング
+        vim.api.nvim_buf_set_keymap(
+          bufnr,
+          "n",
+          "<Space>fd",
+          '<cmd>lua vim.diagnostic.open_float(nil, { focusable = false, border = "rounded", source = "always", header = "", prefix = "" })<CR>',
+          opts
+        )
+
+        -- その他のLSP関連のキーマッピングや設定...
+      end
+
+      require("lspconfig")["solargraph"].setup({
+        on_attach = on_attach,
+        settings = {
+          solargraph = {
+            diagnostics = true,
+          },
+        },
+      })
+
+      require("typescript").setup({
+        server = {
+          on_attach = on_attach,
+        },
+      })
+    end,
   },
 }
