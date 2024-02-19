@@ -19,27 +19,13 @@ SAVEHIST=1000000
 setopt extended_history
 alias history='history -t "%F %T"'
 
-# プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-
-# 改変箇所_2
-PROMPT="%{${fg[blue]}%}%n:%{${reset_color}%} %c/ %# "
-# 2行表示
-# PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
-# %# " 
-
-# 改変箇所_3
-# 出力の後に改行を入れる
-function add_line {
-  if [[ -z "${PS1_NEWLINE_LOGIN}" ]]; then
-    PS1_NEWLINE_LOGIN=true
-  else
-    printf '\n'
-  fi
+left-prompt() {
+  local dir="%F{11}%~%f"
+  local next="%F{47}❯%f "
+  echo -e "\n${user}${dir}\n${next}"
 }
-PROMPT_COMMAND='add_line'
- 
+PROMPT=`left-prompt`
+
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
 select-word-style default
