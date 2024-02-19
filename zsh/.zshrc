@@ -22,7 +22,7 @@ alias history='history -t "%F %T"'
 left-prompt() {
   local dir="%F{11}%~%f"
   local next="%F{47}❯%f "
-  echo -e "\n${user}${dir}\n${next}"
+  echo -e "${user}${dir}\n${next}"
 }
 PROMPT=`left-prompt`
 
