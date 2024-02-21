@@ -20,7 +20,7 @@ setopt extended_history
 alias history='history -t "%F %T"'
 
 left-prompt() {
-  local dir="%F{green}%~%f"
+  local dir="%F{yellow}%M: %F{green}%~%f"
   local next="%F{47}❯%f "
   echo -e "${user}${dir}\n${next}"
 }
