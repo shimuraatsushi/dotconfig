@@ -1,7 +1,7 @@
 return {
   {
     --  "polirritmico/monokai-nightasty.nvim",
-    "craftzdog/solarized-osaka.nvim",
+    "sainnhe/gruvbox-material",
     lazy = true,
     priority = 1000,
   },
