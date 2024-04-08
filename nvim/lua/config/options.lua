@@ -8,4 +8,5 @@ opt.undofile = false
 opt.swapfile = false
 opt.wrap = true
 opt.incsearch = true
+opt.hlsearch = true
 opt.ignorecase = false
