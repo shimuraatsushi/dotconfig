@@ -2,11 +2,10 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-local opt = vim.opt
-opt.relativenumber = false
-opt.undofile = false
-opt.swapfile = false
-opt.wrap = true
-opt.incsearch = true
-opt.hlsearch = true
-opt.ignorecase = false
+vim.opt.relativenumber = false
+vim.opt.undofile = false
+vim.opt.swapfile = false
+vim.opt.wrap = true
+vim.opt.incsearch = true
+vim.opt.ignorecase = false
+vim.opt.hlsearch = true
