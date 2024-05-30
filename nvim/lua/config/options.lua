@@ -8,4 +8,6 @@ vim.opt.swapfile = false
 vim.opt.wrap = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = false
-vim.opt.hlsearch = true
+--vim.opt.hlsearch = true
+
+vim.cmd("set hlsearch")
