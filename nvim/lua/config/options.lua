@@ -1,0 +1,10 @@
+vim.opt.relativenumber = false
+vim.opt.undofile = false
+vim.opt.swapfile = false
+vim.opt.wrap = true
+vim.opt.incsearch = true
+vim.opt.ignorecase = false
+vim.opt.hlsearch = true
+vim.opt.showtabline = 2
+vim.opt.splitbelow = true
+vim.opt.splitright = true
