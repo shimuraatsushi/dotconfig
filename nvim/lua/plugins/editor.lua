@@ -67,7 +67,10 @@ return {
     lazy = false,
     config = function()
       vim.g.copilot_no_tab_map = true
-      vim.api.nvim_set_keymap("i", "<C-l>", "<Plug>(copilot-accept)", { noremap = true, silent = true })
+      vim.keymap.set('i', '<C-l>', 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false
+      })
     end,
   },
 

@@ -8,3 +8,4 @@ vim.opt.hlsearch = true
 vim.opt.showtabline = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.number = true
