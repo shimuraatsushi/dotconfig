@@ -1,10 +1,10 @@
 return {
-  'Tsuzat/NeoSolarized.nvim',
+  'ellisonleao/gruvbox.nvim',
   lazy = false,
   priority = 1000,
+  config = true,
   opts = {},
   config = function(_, opts)
-    vim.cmd([[ colorscheme NeoSolarized ]])
-    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#FFFFFF', bg = 'none' })
+    vim.cmd([[ colorscheme gruvbox ]])
   end,
 }
