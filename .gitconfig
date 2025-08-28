@@ -74,7 +74,7 @@
         smu = submodule foreach "git checkout main; git pull origin main"
         smupdate = submodule foreach "git checkout main; git pull origin main"
         show-graph = log --graph --abbrev-commit --pretty=oneline
-
+        wk = worktree
 [push]
         default = simple
 [grep]
