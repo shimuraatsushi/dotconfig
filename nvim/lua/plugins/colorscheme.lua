@@ -1,10 +1,21 @@
+-- return {
+--   'ellisonleao/gruvbox.nvim',
+--   lazy = false,
+--   priority = 1000,
+--   config = true,
+--   opts = {},
+--   config = function(_, opts)
+--     vim.cmd([[ colorscheme gruvbox ]])
+--   end,
+-- }
+
 return {
-  'ellisonleao/gruvbox.nvim',
+  "loctvl842/monokai-pro.nvim",
   lazy = false,
   priority = 1000,
   config = true,
   opts = {},
   config = function(_, opts)
-    vim.cmd([[ colorscheme gruvbox ]])
+    vim.cmd([[ colorscheme monokai-pro]])
   end,
 }
