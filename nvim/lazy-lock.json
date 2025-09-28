@@ -7,9 +7,9 @@
   "lualine.nvim": { "branch": "master", "commit": "b8c23159c0161f4b89196f74ee3a6d02cdc3a955" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "5e085efe67fccb13372d54331d849219662a7e93" },
   "mason.nvim": { "branch": "main", "commit": "7dc4facca9702f95353d5a1f87daf23d78e31c2a" },
-  "monokai-pro.nvim": { "branch": "master", "commit": "1ac671f6da720cba967d28d25c2f16b8b4e18808" },
   "nvim-cmp": { "branch": "main", "commit": "b5311ab3ed9c846b585c0c15b7559be131ec4be9" },
   "nvim-lspconfig": { "branch": "master", "commit": "f8474abbe3f0cf7cf2476331313b583207787148" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
-  "nvim-web-devicons": { "branch": "master", "commit": "f66cdfef5e84112045b9ebc3119fee9bddb3c687" }
+  "nvim-web-devicons": { "branch": "master", "commit": "f66cdfef5e84112045b9ebc3119fee9bddb3c687" },
+  "onedarkpro.nvim": { "branch": "main", "commit": "cdd4d1d1ce734170a61766ffd2fb68f40165e188" }
 }
