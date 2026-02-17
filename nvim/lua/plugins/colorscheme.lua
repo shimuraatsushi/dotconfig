@@ -1,13 +1,13 @@
--- return {
---   'ellisonleao/gruvbox.nvim',
---   lazy = false,
---   priority = 1000,
---   config = true,
---   opts = {},
---   config = function(_, opts)
---     vim.cmd([[ colorscheme gruvbox ]])
---   end,
--- }
+return {
+  'ellisonleao/gruvbox.nvim',
+  lazy = false,
+  priority = 1000,
+  config = true,
+  opts = {},
+  config = function(_, opts)
+    vim.cmd([[ colorscheme gruvbox ]])
+  end,
+}
 
 -- return {
 --   "loctvl842/monokai-pro.nvim",
@@ -20,10 +20,10 @@
 --   end,
 -- }
 
-return {
-  "olimorris/onedarkpro.nvim",
-  priority = 1000,
-  config = function(_, opts)
-    vim.cmd([[ colorscheme onedark ]])
-  end,
-}
+-- return {
+--   "olimorris/onedarkpro.nvim",
+--   priority = 1000,
+--   config = function(_, opts)
+--     vim.cmd([[ colorscheme onedark ]])
+--   end,
+-- }

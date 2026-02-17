@@ -19,3 +19,5 @@ if vim.fn.has('mac') == 0 then
 else
   vim.opt.clipboard:append{'unnamedplus'}
 end
+
+vim.lsp.set_log_level("off")

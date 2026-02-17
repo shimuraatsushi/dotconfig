@@ -5,9 +5,6 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp",
-      "L3MON4D3/LuaSnip",
     },
     config = function()
       require("mason").setup()
@@ -15,50 +12,23 @@ return {
         ensure_installed = { "solargraph" },
       })
 
-      local cmp = require("cmp")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
-      local capabilities = cmp_nvim_lsp.default_capabilities()
+      vim.lsp.enable("solargraph")
 
-      require("lspconfig").solargraph.setup({
-        capabilities = capabilities,
-        on_attach = function(client, bufnr)
-          -- Mappings.
-          -- See `:help vim.lsp.*` for documentation on any of the below functions
-          local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-          local buf_set_option = function(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local bufnr = args.buf
+          local map_opts = { noremap = true, silent = true, buffer = bufnr }
 
-          buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-          -- Mappings.
-          buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
-          buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
-          buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
-          buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
-          buf_set_keymap("n", "<leader>k", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
-          buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
-          buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
-          buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-          buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true })
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, map_opts)
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, map_opts)
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, map_opts)
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, map_opts)
+          vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, map_opts)
+          vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, map_opts)
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, map_opts)
+          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, map_opts)
+          vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, map_opts)
         end,
-      })
-
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        }),
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        }),
       })
     end,
   },
