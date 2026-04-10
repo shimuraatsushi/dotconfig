@@ -1,37 +1,4 @@
 return {
-  -- LSP Configuration
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
-    config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "solargraph" },
-      })
-
-      vim.lsp.enable("solargraph")
-
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(args)
-          local bufnr = args.buf
-          local map_opts = { noremap = true, silent = true, buffer = bufnr }
-
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, map_opts)
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, map_opts)
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, map_opts)
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, map_opts)
-          vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, map_opts)
-          vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, map_opts)
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, map_opts)
-          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, map_opts)
-          vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, map_opts)
-        end,
-      })
-    end,
-  },
   {
     "github/copilot.vim",
     lazy = false,
